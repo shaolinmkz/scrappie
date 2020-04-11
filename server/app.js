@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
@@ -29,14 +30,14 @@ app.use('/api/v1', routes);
 
 app.get('/', (req, res) => res.status(200).json({
     status: 200,
-    message: 'welcome to scrappy'
+    message: 'welcome to scrappie',
 }));
 
 app.get('*', (req, res) => res.status(404).json({
     status: 404,
-    message: 'route not found'
+    message: 'route not registered on scrappie',
 }));
 
-app.listen(port, () => log(`🔌 Running on port ${port}`));
+app.listen(port, () => log(`🔌 Scrappie is running on port ${port}`));
 
 module.exports = app;

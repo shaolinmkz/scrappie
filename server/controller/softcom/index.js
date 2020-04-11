@@ -4,11 +4,13 @@ const fastArrayDiff = require('fast-array-diff');
 const fs = require('fs');
 
 const GetAvailableJobs =  (req, res) => {
-    const added = fs.existsSync('controller/softcom/softcom-jobs-added.json') ? JSON.parse(fs.readFileSync('controller/softcom/softcom-jobs-added.json', 'utf8')) : undefined;
-    const removed = fs.existsSync('controller/softcom/softcom-jobs-removed.json') ? JSON.parse(fs.readFileSync('controller/softcom/softcom-jobs-removed.json', 'utf8')) : undefined;
+    const { fast } = req.query;
+    const directory = 'server/controller/softcom';
+    const added = fs.existsSync(`${directory}/softcom-jobs-added.json`) ? JSON.parse(fs.readFileSync(`${directory}/softcom-jobs-added.json`, 'utf8')) : null;
+    const removed = fs.existsSync(`${directory}/softcom-jobs-removed.json`) ? JSON.parse(fs.readFileSync(`${directory}/softcom-jobs-removed.json`, 'utf8')) : null;
     let sent = false;
-    if(fs.existsSync('controller/softcom/softcom-jobs.json')) {
-        const oldJobsJson = fs.readFileSync('controller/softcom/softcom-jobs.json', 'utf8');
+    if((fast === 'true') && fs.existsSync(`${directory}/softcom-jobs.json`)) {
+        const oldJobsJson = fs.readFileSync(`${directory}/softcom-jobs.json`, 'utf8');
         const oldJobs = JSON.parse(oldJobsJson);
         sent = true;
         res.status(200).json({
@@ -20,7 +22,8 @@ const GetAvailableJobs =  (req, res) => {
         });
     }
 
-    get('https://softcom.ng/careers/openings/')
+    const SOFTCOM = 'https://softcom.ng/careers/openings/';
+    get(SOFTCOM)
     .then(({ data }) => {
         const $ = cheerio.load(data);
     
@@ -37,10 +40,10 @@ const GetAvailableJobs =  (req, res) => {
        }).toArray();
 
        // write to file
-       fs.writeFileSync('controller/softcom/softcom-jobs.json', JSON.stringify(jobs, null, 2));
+       fs.writeFileSync(`${directory}/softcom-jobs.json`, JSON.stringify(jobs, null, 2));
     
-       if(fs.existsSync('controller/softcom/softcom-jobs.json')) {
-        const oldJobsJson = fs.readFileSync('controller/softcom/softcom-jobs.json', 'utf8');
+       if(fs.existsSync(`${directory}/softcom-jobs.json`)) {
+        const oldJobsJson = fs.readFileSync(`${directory}/softcom-jobs.json`, 'utf8');
         const oldJobs = JSON.parse(oldJobsJson);
     
         const diff = fastArrayDiff.diff(oldJobs, jobs, (jobA, jobB) => {
@@ -52,12 +55,12 @@ const GetAvailableJobs =  (req, res) => {
     
         if(diff.added.length > 0) {
             const softcomJobsAdded = diff.added.map(jobsAdded => jobsAdded);
-            fs.writeFileSync('controller/softcom/softcom-jobs-added.json', JSON.stringify(softcomJobsAdded, null, 2));
+            fs.writeFileSync(`${directory}/softcom-jobs-added.json`, JSON.stringify(softcomJobsAdded, null, 2));
         }
         
         if(diff.removed.length > 0) {
             const softcomJobsRemoved = diff.removed.map(jobsRemoved => jobsRemoved);
-            fs.writeFileSync('controller/softcom/softcom-jobs-removed.json', JSON.stringify(softcomJobsRemoved, null, 2));
+            fs.writeFileSync(`${directory}/softcom-jobs-removed.json`, JSON.stringify(softcomJobsRemoved, null, 2));
         }
     
     }
@@ -70,7 +73,12 @@ const GetAvailableJobs =  (req, res) => {
         });
     }
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+      res.status(500).json({
+        status: 500,
+        error: error?.response,
+    });
+  });
 }
 
 module.exports = { GetAvailableJobs }
