@@ -11,7 +11,7 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nwabuzor C. Obiora",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.8.4",

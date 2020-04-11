@@ -9,7 +9,9 @@ const routes = require('./routes');
 
 dotenv.config();
 
-const { log } = console;
+const {
+  log
+} = console;
 
 const port = process.env.PORT || 4000;
 
@@ -21,21 +23,25 @@ app.use(cors());
 
 app.use(logger('dev'));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json({ type: 'application/json' }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+app.use(bodyParser.json({
+  type: 'application/json'
+}));
 app.use(bodyParser.text());
 
 
 app.use('/api/v1', routes);
 
 app.get('/', (req, res) => res.status(200).json({
-    status: 200,
-    message: 'welcome to scrappie',
+  status: 200,
+  message: 'welcome to scrappie',
 }));
 
 app.get('*', (req, res) => res.status(404).json({
-    status: 404,
-    message: 'route not registered on scrappie',
+  status: 404,
+  message: 'route not registered on scrappie',
 }));
 
 app.listen(port, () => log(`🔌 Scrappie is running on port ${port}`));

@@ -8,7 +8,7 @@ Was bored and decided to build an API that retrieves relevant informations from 
     <th>Method</th>
     <th>Endpoint</th>
     <th>Uses</th>
-    <th>Param</th>
+    <th>Params</th>
     <th>Query</th>
   </tr>
 
@@ -23,7 +23,7 @@ Was bored and decided to build an API that retrieves relevant informations from 
   <tr>
     <td>GET</td>
     <td>https://shaolinmkz-scrappie.herokuapp.com/api/v1/ncdc/covid-19-stats</td>
-    <td>Retrieves Covid-19 Stats From NCDC</td>
+    <td>Retrieves Covid-19 Stats From The NCDC</td>
     <td>N/A</td>
     <td>?fast="true"</td>
   </tr>

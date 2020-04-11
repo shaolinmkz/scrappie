@@ -1,4 +1,6 @@
-const { Router } = require('express');
+const {
+  Router
+} = require('express');
 const softcomRoute = require('./softcom');
 const ncdcRoute = require('./ncdc');
 

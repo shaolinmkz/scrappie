@@ -1,5 +1,9 @@
-const { Router } = require('express');
-const { getStatsOnCovid } = require('../controller/ncdc');
+const {
+  Router
+} = require('express');
+const {
+  getStatsOnCovid
+} = require('../controller/ncdc');
 
 const ncdcRouter = Router();
 

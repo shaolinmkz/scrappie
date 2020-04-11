@@ -1,5 +1,9 @@
-const { Router } = require('express');
-const { GetAvailableJobs } = require('../controller/softcom');
+const {
+  Router
+} = require('express');
+const {
+  GetAvailableJobs
+} = require('../controller/softcom');
 
 const softcomRouter = Router();
 

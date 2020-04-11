@@ -160,6 +160,7 @@
     "totalNumberOfCasesLabConfirmed": 305,
     "totalNumberOfCasesOnAdmission": 240,
     "totalNumberOfDischarged": 58,
-    "totalNumberOfDeaths": 7
+    "totalNumberOfDeaths": 7,
+    "totalNumberOfStatesAffected": 19
   }
 }
