@@ -27,4 +27,12 @@ Was bored and decided to build an API that retrieves relevant informations from 
     <td>N/A</td>
     <td>?fast="true"</td>
   </tr>
+
+  <tr>
+    <td>GET</td>
+    <td>https://shaolinmkz-scrappie.herokuapp.com/api/v1/corona-virus/world-stats</td>
+    <td>Retrieves Covid-19 World Stats</td>
+    <td>N/A</td>
+    <td>?fast="true"</td>
+  </tr>
 <table>

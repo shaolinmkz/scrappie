@@ -73,8 +73,8 @@ const getStatsOnCovid = (req, res) => {
 
         const data = {
           summary,
+          total: formattedTotal,
           statesCount: stats.sort((stateA, stateB) => stateA?.state.toUpperCase() > stateB?.state.toUpperCase() ? 1 : -1),
-          total: formattedTotal
         }
 
         // write to file

@@ -65,3 +65,4 @@ server/controller/ncdc/covid-19-stats.json
 server/controller/softcom/softcom-jobs.json
 server/controller/softcom/softcom-jobs-added.json
 server/controller/softcom/softcom-jobs-removed.json
+server/controller/coronaVirus/covid19-world-stats.json
