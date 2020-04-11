@@ -13,13 +13,13 @@ const getStatsOnCovid = (req, res) => {
 
     let sent = false;
     const savePath = 'server/controller/ncdc/covid-19-stats.json';
-    if ((fast === 'true') && savePath) {
+    if ((fast === 'true') && fs.existsSync(savePath)) {
       const oldCovidStatsJson = fs.readFileSync(savePath, 'utf8') || JSON.stringify({});
       const oldCovidStats = JSON.parse(oldCovidStatsJson);
       sent = true;
       res.status(200).json({
         status: true,
-        message: 'available jobs at softcom',
+        message: 'covid-19 stats for Nigeria retrieved successfully',
         data: oldCovidStats,
       });
     }

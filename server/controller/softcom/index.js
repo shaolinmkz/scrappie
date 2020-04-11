@@ -20,7 +20,7 @@ const GetAvailableJobs = (req, res) => {
       sent = true;
       res.status(200).json({
         status: true,
-        message: 'available jobs at softcom',
+        message: 'available jobs at softcom retrieved successfully',
         data: oldJobs,
       });
     }
@@ -72,9 +72,8 @@ const GetAvailableJobs = (req, res) => {
         if (!sent) {
           res.status(200).json({
             status: 200,
+            message: 'available jobs at softcom retrieved successfully',
             data: jobs,
-            added,
-            removed,
           });
         }
       })
