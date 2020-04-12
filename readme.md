@@ -36,3 +36,6 @@ Was bored and decided to build an API that retrieves relevant informations from 
     <td>?fast="true"</td>
   </tr>
 <table>
+
+
+GH-Docs: https://shaolinmkz.github.io/scrappie/

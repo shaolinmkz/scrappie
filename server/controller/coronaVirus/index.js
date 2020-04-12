@@ -65,7 +65,9 @@ const getWorldStatsOnCovid = (req, res) => {
 
         let data = {
           worldTotal,
-          worldStats: worldStat.filter(({ country }) => country && country.toLowerCase() !== 'total:'),
+          worldStats: worldStat
+          .filter(({ country }) => country && country.toLowerCase() !== 'total:')
+          .sort((dataA, dataB) => dataA?.country.toUpperCase() > dataB?.country.toUpperCase() ? 1 : -1),
         }
 
         // write to file
