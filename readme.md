@@ -38,4 +38,4 @@ Was bored and decided to build an API that retrieves relevant informations from 
 <table>
 
 
-GH-Docs: https://shaolinmkz.github.io/scrappie/
+Sample: https://nochukwuemeka.netlify.com/covid19
