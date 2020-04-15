@@ -38,4 +38,4 @@ Was bored and decided to build an API that retrieves relevant informations from 
 <table>
 
 
-Sample: https://nochukwuemeka.netlify.com/covid19
+Sample data usage: https://nochukwuemeka.netlify.com/covid19
