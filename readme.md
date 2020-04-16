@@ -31,7 +31,7 @@ Was bored and decided to build an API that retrieves relevant informations from 
   <tr>
     <td>GET</td>
     <td>https://shaolinmkz-scrappie.herokuapp.com/api/v1/corona-virus/world-stats</td>
-    <td>Retrieves Covid-19 World Stats</td>
+    <td>Retrieves Covid-19 World Stats from World Meter</td>
     <td>N/A</td>
     <td>?fast="true"</td>
   </tr>
