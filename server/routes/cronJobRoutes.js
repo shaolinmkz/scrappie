@@ -40,14 +40,14 @@ cronJobRouter.get('/world-meter/scrap',
     });
   } else if(req.query?.on === 'true') {
     worldMeterSchedule.start();
-    res.status(204).json({
+    res.status(200).json({
       start: true,
       method: req.method,
       message: 'Scrapping World Meter Turned ON',
     });
   } else {
     worldMeterSchedule.destroy();
-    res.status(204).json({
+    res.status(200).json({
       start: false,
       method: req.method,
       message: 'Scrapping World Meter Turned OFF',
