@@ -89,7 +89,7 @@ export const ncdcShedule = cron.schedule('*/10 * * * *', () => { // *10
 
         return {
           state,
-          numberOfCasesLabConfirmed,
+          numberOfCasesLabConfirmed: numberOfCasesLabConfirmed || (numberOfCasesOnAdmission + numberOfDischarged + numberOfDeaths),
           numberOfCasesOnAdmission,
           numberOfDischarged,
           numberOfDeaths,

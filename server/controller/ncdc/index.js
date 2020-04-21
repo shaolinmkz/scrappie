@@ -32,7 +32,7 @@ export const scrapNcdc = ({ req, res, sent }) => {
 
         return {
           state,
-          numberOfCasesLabConfirmed,
+          numberOfCasesLabConfirmed: numberOfCasesLabConfirmed || (numberOfCasesOnAdmission + numberOfDischarged + numberOfDeaths),
           numberOfCasesOnAdmission,
           numberOfDischarged,
           numberOfDeaths,
