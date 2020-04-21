@@ -37,5 +37,6 @@ Was bored and decided to build an API that retrieves relevant informations from 
   </tr>
 <table>
 
+[Documentation](https://documenter.getpostman.com/view/5101965/Szf828AS)
 
-Sample data usage: https://nochukwuemeka.netlify.com/covid19
+[Sample UI](https://nochukwuemeka.netlify.com/covid19)
