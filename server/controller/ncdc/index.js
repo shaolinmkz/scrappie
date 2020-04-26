@@ -24,11 +24,11 @@ export const scrapNcdc = ({ req, res, sent }) => {
       }).toArray();
 
       const stats = $('#custom3 > tbody > tr').map(function () {
-        const state = $(this).find('td:nth-child(1)').text().trim();
-        const numberOfCasesLabConfirmed = +$(this).find('td:nth-child(2)').text().trim();
-        const numberOfCasesOnAdmission = +$(this).find('td:nth-child(3)').text().trim();
-        const numberOfDischarged = +$(this).find('td:nth-child(4)').text().trim();
-        const numberOfDeaths = +$(this).find('td:nth-child(5)').text().trim();
+        const state = $(this).find('td:nth-child(1) > p').text().trim();
+        const numberOfCasesLabConfirmed = +$(this).find('td:nth-child(2) > p').text().trim();
+        const numberOfCasesOnAdmission = +$(this).find('td:nth-child(3) > p').text().trim();
+        const numberOfDischarged = +$(this).find('td:nth-child(4) > p').text().trim();
+        const numberOfDeaths = +$(this).find('td:nth-child(5) > p').text().trim();
 
         return {
           state,
@@ -37,7 +37,7 @@ export const scrapNcdc = ({ req, res, sent }) => {
           numberOfDischarged,
           numberOfDeaths,
         }
-      }).toArray().filter(({ state }) => state);
+      }).toArray();
 
       // remove first entry
       stats.shift();
@@ -51,13 +51,13 @@ export const scrapNcdc = ({ req, res, sent }) => {
         totalNumberOfCasesOnAdmission: +total.numberOfCasesOnAdmission,
         totalNumberOfDischarged: +total.numberOfDischarged,
         totalNumberOfDeaths: +total.numberOfDeaths,
-        totalNumberOfStatesAffected: stats.length,
+        totalNumberOfStatesAffected: stats.filter(({ state }) => state).length,
       }
 
       const data = {
         summary,
         total: formattedTotal,
-        statesCount: stats.sort((stateA, stateB) => stateA?.state.toUpperCase() > stateB?.state.toUpperCase() ? 1 : -1),
+        statesCount: stats.filter(({ state }) => state).sort((stateA, stateB) => stateA?.state.toUpperCase() > stateB?.state.toUpperCase() ? 1 : -1),
       }
 
       // write to file
