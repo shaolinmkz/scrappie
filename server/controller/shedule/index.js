@@ -5,7 +5,7 @@ const {
 const cheerio = require('cheerio');
 const fs = require('fs');
 
-
+const { log } = console;
 
 export const worldMeterSchedule = cron.schedule('*/15 * * * *', () => { // */15
   const savePath = 'server/controller/coronaVirus/covid19-world-stats.json';
@@ -56,7 +56,7 @@ export const worldMeterSchedule = cron.schedule('*/15 * * * *', () => { // */15
       }
       // write to file
       fs.writeFileSync(savePath, JSON.stringify(data, null, 2));
-      console.log('==> scrapped world meter');
+      log('==> scrapped world meter');
     }).catch(err => err);
 });
 
@@ -94,7 +94,7 @@ export const ncdcShedule = cron.schedule('*/10 * * * *', () => { // *10
           numberOfDischarged,
           numberOfDeaths,
         }
-      }).toArray();
+      }).toArray().filter(({ state }) => state);;
 
       // remove first entry
       stats.shift();
@@ -119,6 +119,6 @@ export const ncdcShedule = cron.schedule('*/10 * * * *', () => { // *10
 
       // write to file
       fs.writeFileSync(savePath, JSON.stringify(data, null, 2));
-      console.log('==> scrapped ncdc');
+      log('==> scrapped ncdc');
 }).catch(err => err);
 });

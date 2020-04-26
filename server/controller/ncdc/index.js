@@ -37,7 +37,7 @@ export const scrapNcdc = ({ req, res, sent }) => {
           numberOfDischarged,
           numberOfDeaths,
         }
-      }).toArray();
+      }).toArray().filter(({ state }) => state);
 
       // remove first entry
       stats.shift();
