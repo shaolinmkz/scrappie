@@ -39,4 +39,4 @@ Was bored and decided to build an API that retrieves relevant informations from 
 
 [Documentation](https://documenter.getpostman.com/view/5101965/Szf828AS)
 
-[Sample UI](https://nochukwuemeka.netlify.com/covid19)
+[Sample UI](https://x3kzm.csb.app/)
