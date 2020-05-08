@@ -53,10 +53,10 @@ const getStatsOnCovid = (req, res) => {
   
         const stats = $('#custom1 > tbody > tr').map(function () {
           const state = $(this).find('td:nth-child(1)').text().trim();
-          const numberOfCasesLabConfirmed = +$(this).find('td:nth-child(2)').text().trim();
-          const numberOfCasesOnAdmission = +$(this).find('td:nth-child(3)').text().trim();
-          const numberOfDischarged = +$(this).find('td:nth-child(4)').text().trim();
-          const numberOfDeaths = +$(this).find('td:nth-child(5)').text().trim();
+          const numberOfCasesLabConfirmed = +$(this).find('td:nth-child(2)').text().trim().replace('>', '').replace(',', '');
+          const numberOfCasesOnAdmission = +$(this).find('td:nth-child(3)').text().trim().replace('>', '').replace(',', '');
+          const numberOfDischarged = +$(this).find('td:nth-child(4)').text().trim().replace('>', '').replace(',', '');
+          const numberOfDeaths = +$(this).find('td:nth-child(5)').text().trim().replace('>', '').replace(',', '');
   
           return {
             state,
